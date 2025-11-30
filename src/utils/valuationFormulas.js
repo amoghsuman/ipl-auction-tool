@@ -3,11 +3,11 @@
 
 // Constants
 const RUNS_PER_WIN = 22; // Empirically derived for T20 cricket
-const MARKET_RATE_PER_WAR = 7; // Crores per WAR (updated annually)
+const MARKET_RATE_PER_WAR = 2.5; // Crores per WAR (calibrated to realistic IPL auction prices)
 const MATCHES_PER_SEASON = 14; // Standard IPL season
-const REPLACEMENT_LEVEL_BATSMAN_PER_MATCH = 20; // Runs equivalent per match for replacement player
-const REPLACEMENT_LEVEL_BOWLER_PER_MATCH = 12; // Runs saved per match for replacement bowler
-const WICKET_VALUE = 16; // Runs per wicket in T20
+const REPLACEMENT_LEVEL_BATSMAN_SEASON = 280; // Total runs equivalent for replacement batsman per season
+const REPLACEMENT_LEVEL_BOWLER_SEASON = 150; // Total runs saved for replacement bowler per season
+const WICKET_VALUE = 6; // Runs per wicket in T20 (calibrated for realistic valuations)
 
 // Age-based confidence levels
 const getConfidenceLevel = (matches) => {
@@ -17,80 +17,47 @@ const getConfidenceLevel = (matches) => {
   return 0.50; // Limited data
 };
 
-// Calculate Batting Runs Created (BRC) - Per Match Average
+// Calculate Batting Runs Created (BRC) - Simplified with Multi-Season Normalization
 export const calculateBattingRunsCreated = (battingStats) => {
   if (!battingStats) return 0;
 
-  const { runs, fours, sixes, strikeRate, runsInWins, highPressureRuns, matches } = battingStats;
+  const { runs, strikeRate, matches } = battingStats;
 
-  // Calculate per-match averages
-  const runsPerMatch = runs / matches;
-  const foursPerMatch = fours / matches;
-  const sixesPerMatch = sixes / matches;
-  const runsInWinsPerMatch = runsInWins / matches;
-  const highPressureRunsPerMatch = highPressureRuns / matches;
+  // CRITICAL: Normalize multi-season cumulative stats to single season average
+  // The stats represent multiple seasons, so we get the average season performance
+  const seasonsInData = matches / MATCHES_PER_SEASON;
+  const runsPerSeason = runs / seasonsInData;
 
-  // Actual runs per match
-  const actualRuns = runsPerMatch;
-
-  // Boundary Bonus: (Boundaries × 0.5) per match
-  const boundaryBonus = ((foursPerMatch + sixesPerMatch) * 0.5);
-
-  // Strike Rate Bonus: If SR > 140, add bonus
-  let srBonus = 0;
-  if (strikeRate > 140) {
-    const bonusPercentage = Math.min(0.12, (strikeRate - 140) / 1000);
-    srBonus = runsPerMatch * bonusPercentage;
+  // Small Strike Rate adjustment: Only if exceptional (>150)
+  let srAdjustment = 1.0;
+  if (strikeRate > 150) {
+    srAdjustment = 1.0 + ((strikeRate - 150) / 1000); // Max ~10% bonus for SR 250
   }
 
-  // Situational Bonus: Runs in winning causes weighted higher
-  const situationalBonus = runsInWinsPerMatch * 0.15;
-
-  // High-Pressure Bonus: Performance in close matches
-  const pressureBonus = highPressureRunsPerMatch * 0.10;
-
-  const brcPerMatch = actualRuns + boundaryBonus + srBonus + situationalBonus + pressureBonus;
-
-  // Project to full season (14 matches)
-  return brcPerMatch * MATCHES_PER_SEASON;
+  return runsPerSeason * srAdjustment;
 };
 
-// Calculate Bowling Runs Saved (BRS) - Per Match Average
+// Calculate Bowling Runs Saved (BRS) - Simplified with Multi-Season Normalization
 export const calculateBowlingRunsSaved = (bowlingStats) => {
   if (!bowlingStats) return 0;
 
-  const { overs, economy, wickets, deathOvers, deathEconomy, powerplayWickets, matches } = bowlingStats;
+  const { overs, economy, wickets, matches } = bowlingStats;
 
-  // Calculate per-match averages
-  const oversPerMatch = overs / matches;
-  const wicketsPerMatch = wickets / matches;
-  const deathOversPerMatch = deathOvers / matches;
-  const powerplayWicketsPerMatch = powerplayWickets / matches;
+  // CRITICAL: Normalize multi-season cumulative stats to single season average
+  const seasonsInData = matches / MATCHES_PER_SEASON;
+  const oversPerSeason = overs / seasonsInData;
+  const wicketsPerSeason = wickets / seasonsInData;
 
-  // Calculate expected runs vs actual runs conceded per match
+  // Calculate runs saved from economy for the season
   const leagueAverageEconomy = 9.0; // IPL average
-  const expectedRuns = oversPerMatch * leagueAverageEconomy;
-  const actualRuns = oversPerMatch * economy;
+  const expectedRuns = oversPerSeason * leagueAverageEconomy;
+  const actualRuns = oversPerSeason * economy;
   const runsSavedFromEconomy = expectedRuns - actualRuns;
 
-  // Wicket value per match
-  const wicketValue = wicketsPerMatch * WICKET_VALUE;
+  // Wicket value for the season
+  const wicketValue = wicketsPerSeason * WICKET_VALUE;
 
-  // Death bowling premium (if applicable) per match
-  let deathBowlingBonus = 0;
-  if (deathOversPerMatch > 0) {
-    const deathLeagueAvg = 10.5;
-    const deathRunsSaved = (deathLeagueAvg - deathEconomy) * deathOversPerMatch;
-    deathBowlingBonus = deathRunsSaved * 0.3; // 30% premium for death bowling
-  }
-
-  // Powerplay wickets bonus per match
-  const powerplayBonus = powerplayWicketsPerMatch * 5; // Extra value for powerplay wickets
-
-  const brsPerMatch = runsSavedFromEconomy + wicketValue + deathBowlingBonus + powerplayBonus;
-
-  // Project to full season (14 matches)
-  return brsPerMatch * MATCHES_PER_SEASON;
+  return runsSavedFromEconomy + wicketValue;
 };
 
 // Calculate All-Rounder combined value
@@ -109,10 +76,9 @@ export const calculateBattingWAR = (battingStats) => {
   if (!battingStats) return 0;
 
   const brc = calculateBattingRunsCreated(battingStats);
-  const replacementLevelSeason = REPLACEMENT_LEVEL_BATSMAN_PER_MATCH * MATCHES_PER_SEASON;
   
   // Runs Above Replacement
-  const rar = brc - replacementLevelSeason;
+  const rar = brc - REPLACEMENT_LEVEL_BATSMAN_SEASON;
   
   // Convert to WAR
   const war = rar / RUNS_PER_WIN;
@@ -125,10 +91,9 @@ export const calculateBowlingWAR = (bowlingStats) => {
   if (!bowlingStats) return 0;
 
   const brs = calculateBowlingRunsSaved(bowlingStats);
-  const replacementLevelSeason = REPLACEMENT_LEVEL_BOWLER_PER_MATCH * MATCHES_PER_SEASON;
   
   // Runs Above Replacement
-  const rar = brs - replacementLevelSeason;
+  const rar = brs - REPLACEMENT_LEVEL_BOWLER_SEASON;
   
   // Convert to WAR
   const war = rar / RUNS_PER_WIN;
