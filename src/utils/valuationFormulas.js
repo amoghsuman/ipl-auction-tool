@@ -20,26 +20,34 @@ const getConfidenceLevel = (matches) => {
 export const calculateBattingRunsCreated = (battingStats) => {
   if (!battingStats) return 0;
 
-  const { runs, fours, sixes, strikeRate, runsInWins, highPressureRuns } = battingStats;
+  const { runs, fours, sixes, strikeRate, runsInWins, highPressureRuns, matches } = battingStats;
+
+  // Normalize to per-season (14 matches per IPL season)
+  const seasonsPlayed = matches / 14;
+  const runsPerSeason = runs / seasonsPlayed;
+  const foursPerSeason = fours / seasonsPlayed;
+  const sixesPerSeason = sixes / seasonsPlayed;
+  const runsInWinsPerSeason = runsInWins / seasonsPlayed;
+  const highPressureRunsPerSeason = highPressureRuns / seasonsPlayed;
 
   // Actual runs
-  const actualRuns = runs;
+  const actualRuns = runsPerSeason;
 
   // Boundary Bonus: (Boundaries × 0.5)
-  const boundaryBonus = ((fours + sixes) * 0.5);
+  const boundaryBonus = ((foursPerSeason + sixesPerSeason) * 0.5);
 
   // Strike Rate Bonus: If SR > 140, add 10-12% of runs
   let srBonus = 0;
   if (strikeRate > 140) {
     const bonusPercentage = Math.min(0.12, (strikeRate - 140) / 1000);
-    srBonus = runs * bonusPercentage;
+    srBonus = runsPerSeason * bonusPercentage;
   }
 
   // Situational Bonus: Runs in winning causes weighted higher
-  const situationalBonus = runsInWins * 0.15;
+  const situationalBonus = runsInWinsPerSeason * 0.15;
 
   // High-Pressure Bonus: Performance in close matches
-  const pressureBonus = highPressureRuns * 0.10;
+  const pressureBonus = highPressureRunsPerSeason * 0.10;
 
   const totalBRC = actualRuns + boundaryBonus + srBonus + situationalBonus + pressureBonus;
 
@@ -50,27 +58,34 @@ export const calculateBattingRunsCreated = (battingStats) => {
 export const calculateBowlingRunsSaved = (bowlingStats) => {
   if (!bowlingStats) return 0;
 
-  const { overs, economy, wickets, deathOvers, deathEconomy, powerplayWickets } = bowlingStats;
+  const { overs, economy, wickets, deathOvers, deathEconomy, powerplayWickets, matches } = bowlingStats;
+
+  // Normalize to per-season (14 matches per IPL season)
+  const seasonsPlayed = matches / 14;
+  const oversPerSeason = overs / seasonsPlayed;
+  const wicketsPerSeason = wickets / seasonsPlayed;
+  const deathOversPerSeason = deathOvers / seasonsPlayed;
+  const powerplayWicketsPerSeason = powerplayWickets / seasonsPlayed;
 
   // Calculate expected runs vs actual runs conceded
   const leagueAverageEconomy = 9.0; // IPL average
-  const expectedRuns = overs * leagueAverageEconomy;
-  const actualRuns = overs * economy;
+  const expectedRuns = oversPerSeason * leagueAverageEconomy;
+  const actualRuns = oversPerSeason * economy;
   const runsSavedFromEconomy = expectedRuns - actualRuns;
 
   // Wicket value
-  const wicketValue = wickets * WICKET_VALUE;
+  const wicketValue = wicketsPerSeason * WICKET_VALUE;
 
   // Death bowling premium (if applicable)
   let deathBowlingBonus = 0;
-  if (deathOvers > 0) {
+  if (deathOversPerSeason > 0) {
     const deathLeagueAvg = 10.5;
-    const deathRunsSaved = (deathLeagueAvg - deathEconomy) * deathOvers;
+    const deathRunsSaved = (deathLeagueAvg - deathEconomy) * deathOversPerSeason;
     deathBowlingBonus = deathRunsSaved * 0.3; // 30% premium for death bowling
   }
 
   // Powerplay wickets bonus
-  const powerplayBonus = powerplayWickets * 5; // Extra value for powerplay wickets
+  const powerplayBonus = powerplayWicketsPerSeason * 5; // Extra value for powerplay wickets
 
   const totalBRS = runsSavedFromEconomy + wicketValue + deathBowlingBonus + powerplayBonus;
 
