@@ -1,0 +1,589 @@
+[
+  {
+    "id": 1,
+    "name": "Virat Kohli",
+    "team": "RCB",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 35,
+    "battingStats": {
+      "matches": 45,
+      "runs": 1545,
+      "average": 38.6,
+      "strikeRate": 145.2,
+      "fours": 142,
+      "sixes": 58,
+      "runsInWins": 920,
+      "highPressureRuns": 280
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 2,
+    "name": "Jasprit Bumrah",
+    "team": "MI",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 30,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 42,
+      "overs": 168,
+      "wickets": 62,
+      "economy": 7.2,
+      "dotBallPercentage": 42.5,
+      "deathOvers": 84,
+      "deathEconomy": 8.1,
+      "deathWickets": 28,
+      "powerplayWickets": 18
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 3,
+    "name": "Suryakumar Yadav",
+    "team": "MI",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 33,
+    "battingStats": {
+      "matches": 42,
+      "runs": 1350,
+      "average": 35.5,
+      "strikeRate": 155.8,
+      "fours": 95,
+      "sixes": 78,
+      "runsInWins": 780,
+      "highPressureRuns": 200
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 4,
+    "name": "Rashid Khan",
+    "team": "GT",
+    "role": "Bowler",
+    "type": "Overseas",
+    "age": 26,
+    "battingStats": {
+      "matches": 38,
+      "runs": 285,
+      "average": 18.5,
+      "strikeRate": 142.5,
+      "fours": 22,
+      "sixes": 16,
+      "runsInWins": 140,
+      "highPressureRuns": 45
+    },
+    "bowlingStats": {
+      "matches": 38,
+      "overs": 152,
+      "wickets": 54,
+      "economy": 6.8,
+      "dotBallPercentage": 45.2,
+      "deathOvers": 0,
+      "deathEconomy": 0,
+      "deathWickets": 0,
+      "powerplayWickets": 8
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 5,
+    "name": "Hardik Pandya",
+    "team": "MI",
+    "role": "All-Rounder",
+    "type": "Indian",
+    "age": 30,
+    "battingStats": {
+      "matches": 40,
+      "runs": 980,
+      "average": 32.6,
+      "strikeRate": 152.3,
+      "fours": 68,
+      "sixes": 62,
+      "runsInWins": 580,
+      "highPressureRuns": 185
+    },
+    "bowlingStats": {
+      "matches": 40,
+      "overs": 120,
+      "wickets": 38,
+      "economy": 8.4,
+      "dotBallPercentage": 38.5,
+      "deathOvers": 60,
+      "deathEconomy": 9.2,
+      "deathWickets": 18,
+      "powerplayWickets": 8
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 6,
+    "name": "Shubman Gill",
+    "team": "GT",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 24,
+    "battingStats": {
+      "matches": 42,
+      "runs": 1420,
+      "average": 39.4,
+      "strikeRate": 138.5,
+      "fours": 128,
+      "sixes": 52,
+      "runsInWins": 850,
+      "highPressureRuns": 240
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 7,
+    "name": "Mohammed Siraj",
+    "team": "RCB",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 30,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 40,
+      "overs": 160,
+      "wickets": 52,
+      "economy": 8.1,
+      "dotBallPercentage": 40.2,
+      "deathOvers": 48,
+      "deathEconomy": 9.8,
+      "deathWickets": 16,
+      "powerplayWickets": 22
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 8,
+    "name": "KL Rahul",
+    "team": "LSG",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 32,
+    "battingStats": {
+      "matches": 44,
+      "runs": 1480,
+      "average": 40.0,
+      "strikeRate": 136.2,
+      "fours": 135,
+      "sixes": 48,
+      "runsInWins": 890,
+      "highPressureRuns": 265
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 9,
+    "name": "Yuzvendra Chahal",
+    "team": "RR",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 34,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 42,
+      "overs": 168,
+      "wickets": 58,
+      "economy": 7.8,
+      "dotBallPercentage": 42.8,
+      "deathOvers": 12,
+      "deathEconomy": 10.2,
+      "deathWickets": 4,
+      "powerplayWickets": 10
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 10,
+    "name": "Ravindra Jadeja",
+    "team": "CSK",
+    "role": "All-Rounder",
+    "type": "Indian",
+    "age": 35,
+    "battingStats": {
+      "matches": 40,
+      "runs": 820,
+      "average": 28.3,
+      "strikeRate": 142.8,
+      "fours": 58,
+      "sixes": 42,
+      "runsInWins": 495,
+      "highPressureRuns": 145
+    },
+    "bowlingStats": {
+      "matches": 40,
+      "overs": 144,
+      "wickets": 44,
+      "economy": 7.4,
+      "dotBallPercentage": 44.2,
+      "deathOvers": 24,
+      "deathEconomy": 8.8,
+      "deathWickets": 10,
+      "powerplayWickets": 6
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 11,
+    "name": "Rishabh Pant",
+    "team": "DC",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 26,
+    "battingStats": {
+      "matches": 38,
+      "runs": 1280,
+      "average": 36.6,
+      "strikeRate": 158.4,
+      "fours": 88,
+      "sixes": 82,
+      "runsInWins": 740,
+      "highPressureRuns": 220
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 12,
+    "name": "Arshdeep Singh",
+    "team": "PBKS",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 25,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 42,
+      "overs": 168,
+      "wickets": 56,
+      "economy": 8.3,
+      "dotBallPercentage": 39.5,
+      "deathOvers": 84,
+      "deathEconomy": 9.1,
+      "deathWickets": 26,
+      "powerplayWickets": 18
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 13,
+    "name": "Sanju Samson",
+    "team": "RR",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 29,
+    "battingStats": {
+      "matches": 40,
+      "runs": 1240,
+      "average": 34.4,
+      "strikeRate": 148.6,
+      "fours": 92,
+      "sixes": 68,
+      "runsInWins": 720,
+      "highPressureRuns": 195
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 14,
+    "name": "Trent Boult",
+    "team": "RR",
+    "role": "Bowler",
+    "type": "Overseas",
+    "age": 35,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 38,
+      "overs": 152,
+      "wickets": 50,
+      "economy": 8.2,
+      "dotBallPercentage": 41.2,
+      "deathOvers": 40,
+      "deathEconomy": 9.5,
+      "deathWickets": 14,
+      "powerplayWickets": 24
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 15,
+    "name": "Glenn Maxwell",
+    "team": "RCB",
+    "role": "All-Rounder",
+    "type": "Overseas",
+    "age": 35,
+    "battingStats": {
+      "matches": 36,
+      "runs": 1050,
+      "average": 32.8,
+      "strikeRate": 162.5,
+      "fours": 72,
+      "sixes": 68,
+      "runsInWins": 620,
+      "highPressureRuns": 175
+    },
+    "bowlingStats": {
+      "matches": 36,
+      "overs": 72,
+      "wickets": 22,
+      "economy": 7.6,
+      "dotBallPercentage": 38.5,
+      "deathOvers": 8,
+      "deathEconomy": 9.2,
+      "deathWickets": 3,
+      "powerplayWickets": 2
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 16,
+    "name": "Ishan Kishan",
+    "team": "MI",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 26,
+    "battingStats": {
+      "matches": 40,
+      "runs": 1180,
+      "average": 32.8,
+      "strikeRate": 143.5,
+      "fours": 102,
+      "sixes": 54,
+      "runsInWins": 690,
+      "highPressureRuns": 185
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 17,
+    "name": "Pat Cummins",
+    "team": "SRH",
+    "role": "Bowler",
+    "type": "Overseas",
+    "age": 31,
+    "battingStats": {
+      "matches": 36,
+      "runs": 340,
+      "average": 22.6,
+      "strikeRate": 152.2,
+      "fours": 28,
+      "sixes": 18,
+      "runsInWins": 195,
+      "highPressureRuns": 58
+    },
+    "bowlingStats": {
+      "matches": 36,
+      "overs": 144,
+      "wickets": 48,
+      "economy": 8.4,
+      "dotBallPercentage": 40.5,
+      "deathOvers": 60,
+      "deathEconomy": 9.8,
+      "deathWickets": 18,
+      "powerplayWickets": 16
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 18,
+    "name": "Axar Patel",
+    "team": "DC",
+    "role": "All-Rounder",
+    "type": "Indian",
+    "age": 30,
+    "battingStats": {
+      "matches": 40,
+      "runs": 780,
+      "average": 26.8,
+      "strikeRate": 138.2,
+      "fours": 52,
+      "sixes": 38,
+      "runsInWins": 465,
+      "highPressureRuns": 125
+    },
+    "bowlingStats": {
+      "matches": 40,
+      "overs": 152,
+      "wickets": 46,
+      "economy": 7.2,
+      "dotBallPercentage": 43.5,
+      "deathOvers": 20,
+      "deathEconomy": 8.5,
+      "deathWickets": 8,
+      "powerplayWickets": 12
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 19,
+    "name": "Ruturaj Gaikwad",
+    "team": "CSK",
+    "role": "Batsman",
+    "type": "Indian",
+    "age": 27,
+    "battingStats": {
+      "matches": 42,
+      "runs": 1380,
+      "average": 37.3,
+      "strikeRate": 135.8,
+      "fours": 142,
+      "sixes": 42,
+      "runsInWins": 825,
+      "highPressureRuns": 230
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 20,
+    "name": "Mitchell Starc",
+    "team": "KKR",
+    "role": "Bowler",
+    "type": "Overseas",
+    "age": 34,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 38,
+      "overs": 152,
+      "wickets": 52,
+      "economy": 8.5,
+      "dotBallPercentage": 39.8,
+      "deathOvers": 56,
+      "deathEconomy": 10.2,
+      "deathWickets": 20,
+      "powerplayWickets": 20
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 21,
+    "name": "Kuldeep Yadav",
+    "team": "DC",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 29,
+    "battingStats": null,
+    "bowlingStats": {
+      "matches": 40,
+      "overs": 160,
+      "wickets": 54,
+      "economy": 7.6,
+      "dotBallPercentage": 43.2,
+      "deathOvers": 16,
+      "deathEconomy": 9.8,
+      "deathWickets": 6,
+      "powerplayWickets": 12
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 22,
+    "name": "Travis Head",
+    "team": "SRH",
+    "role": "Batsman",
+    "type": "Overseas",
+    "age": 30,
+    "battingStats": {
+      "matches": 35,
+      "runs": 1150,
+      "average": 35.9,
+      "strikeRate": 168.5,
+      "fours": 88,
+      "sixes": 72,
+      "runsInWins": 680,
+      "highPressureRuns": 185
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 23,
+    "name": "Deepak Chahar",
+    "team": "CSK",
+    "role": "Bowler",
+    "type": "Indian",
+    "age": 32,
+    "battingStats": {
+      "matches": 35,
+      "runs": 280,
+      "average": 18.6,
+      "strikeRate": 128.4,
+      "fours": 22,
+      "sixes": 12,
+      "runsInWins": 165,
+      "highPressureRuns": 45
+    },
+    "bowlingStats": {
+      "matches": 35,
+      "overs": 132,
+      "wickets": 42,
+      "economy": 7.8,
+      "dotBallPercentage": 42.5,
+      "deathOvers": 24,
+      "deathEconomy": 9.5,
+      "deathWickets": 10,
+      "powerplayWickets": 20
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 24,
+    "name": "Washington Sundar",
+    "team": "SRH",
+    "role": "All-Rounder",
+    "type": "Indian",
+    "age": 25,
+    "battingStats": {
+      "matches": 38,
+      "runs": 680,
+      "average": 24.3,
+      "strikeRate": 132.5,
+      "fours": 48,
+      "sixes": 28,
+      "runsInWins": 405,
+      "highPressureRuns": 110
+    },
+    "bowlingStats": {
+      "matches": 38,
+      "overs": 136,
+      "wickets": 38,
+      "economy": 7.4,
+      "dotBallPercentage": 42.8,
+      "deathOvers": 16,
+      "deathEconomy": 8.8,
+      "deathWickets": 6,
+      "powerplayWickets": 14
+    },
+    "imageUrl": "/api/placeholder/80/80"
+  },
+  {
+    "id": 25,
+    "name": "David Miller",
+    "team": "GT",
+    "role": "Batsman",
+    "type": "Overseas",
+    "age": 35,
+    "battingStats": {
+      "matches": 38,
+      "runs": 1020,
+      "average": 31.8,
+      "strikeRate": 152.8,
+      "fours": 62,
+      "sixes": 64,
+      "runsInWins": 605,
+      "highPressureRuns": 185
+    },
+    "bowlingStats": null,
+    "imageUrl": "/api/placeholder/80/80"
+  }
+]
