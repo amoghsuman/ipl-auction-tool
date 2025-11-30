@@ -1,0 +1,161 @@
+/* Navigation */
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+.nav-btn {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Barlow', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.nav-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: rgba(10, 77, 143, 0.05);
+}
+
+.nav-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--secondary);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 2000;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification.success {
+  background: var(--success);
+  color: white;
+}
+
+.notification.error {
+  background: var(--danger);
+  color: white;
+}
+
+/* Add to Squad Button */
+.player-card-footer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-details-btn {
+  flex: 1;
+}
+
+.add-squad-btn {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Barlow', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-squad-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.add-squad-btn.added {
+  background: var(--success);
+  border-color: var(--success);
+  cursor: default;
+}
+
+.add-squad-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Player Card In Squad State */
+.player-card.in-squad {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.player-card.in-squad::before {
+  background: var(--success);
+}
+
+/* Pages Container */
+.players-page {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Role Badge Styles */
+.role-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-badge.role-batsman {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+
+.role-badge.role-bowler {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+}
+
+.role-badge.role-allrounder {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+}
